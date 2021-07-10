@@ -1,7 +1,9 @@
 FROM openjdk:8
 MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends net-tools curl netcat
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    net-tools curl netcat \
+    less vim
 
 ENV HBASE_VERSION 2.3.5
 ENV HBASE_URL https://mirrors.tuna.tsinghua.edu.cn/apache/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: zll5267/hadoop-namenode:2.0.0-hadoop3.3.1-java8
+    image: zll5267/hadoop-namenode:${HADOOP_VERSION}
     container_name: namenode
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
@@ -14,7 +14,7 @@ services:
       - 50070:50070
 
   datanode:
-    image: zll5267/hadoop-datanode:2.0.0-hadoop3.3.1-java8
+    image: zll5267/hadoop-datanode:${HADOOP_VERSION}
     container_name: datanode
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
@@ -26,7 +26,7 @@ services:
       - 50075:50075
 
   resourcemanager:
-    image: zll5267/hadoop-resourcemanager:2.0.0-hadoop3.3.1-java8
+    image: zll5267/hadoop-resourcemanager:${HADOOP_VERSION}
     container_name: resourcemanager
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
@@ -36,7 +36,7 @@ services:
       - 8088:8088
 
   nodemanager1:
-    image: zll5267/hadoop-nodemanager:2.0.0-hadoop3.3.1-java8
+    image: zll5267/hadoop-nodemanager:${HADOOP_VERSION}
     container_name: nodemanager
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
@@ -46,7 +46,7 @@ services:
       - 8042:8042
 
   historyserver:
-    image: zll5267/hadoop-historyserver:2.0.0-hadoop3.3.1-java8
+    image: zll5267/hadoop-historyserver:${HADOOP_VERSION}
     container_name: historyserver
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
